@@ -27,7 +27,10 @@ function operate(a, operation, b) {
         case '*':
             return multiply(a, b);
         case '/':
-            return divide(a, b);      
+            return divide(a, b);
+        default:
+            console.log('enter a valid operator');
+            break;
     }
 }
 
