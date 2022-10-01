@@ -2,4 +2,8 @@
 
 const add = (a, b) => a + b;
 
-console.log(add(2000002, 3023442));
+// subtraction
+
+const diff = (a, b) => a - b;
+
+console.log(diff(2000000, 590000000));
