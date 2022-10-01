@@ -10,4 +10,6 @@ const subtract = (a, b) => a - b;
 
 const multiply = (a, b) => a * b;
 
-console.log(multiply(500, 5))
+// division
+
+const divide = (a, b) => a / b;
