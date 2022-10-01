@@ -4,6 +4,10 @@ const add = (a, b) => a + b;
 
 // subtraction
 
-const diff = (a, b) => a - b;
+const subtract = (a, b) => a - b;
 
-console.log(diff(2000000, 590000000));
+// multiplication
+
+const multiply = (a, b) => a * b;
+
+console.log(multiply(500, 5))
