@@ -13,3 +13,21 @@ const multiply = (a, b) => a * b;
 // division
 
 const divide = (a, b) => a / b;
+
+
+// calculate 
+
+function operate(a, operation, b) {
+    
+    switch (operation) {
+        case '+':
+            return add(a, b);
+        case "-":
+            return subtract(a, b);
+        case '*':
+            return multiply(a, b);
+        case '/':
+            return divide(a, b);      
+    }
+}
+
