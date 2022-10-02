@@ -27,6 +27,7 @@ body {
     border-bottom-right-radius: 0;
 }
 
+
 .calc-body {
     border-radius: 1rem;
     border-top-left-radius: 0;
@@ -75,11 +76,9 @@ body {
     align-items: center;
     border-radius: 10%;
     box-shadow: 0px 0px 8px 0px rgb(100, 100, 100);
-}
-
-.keys {
     background-color: rgb(20, 20, 80);
     color: rgb(180, 20, 20);
+    transition: .1s ease-out;
 }
 
 .red-clr {
@@ -92,13 +91,52 @@ body {
     color: rgb(230, 230, 230);
 }
 
-
 .zero, 
 .equals {
     border-radius: .8rem;
     margin: 0 3px;
     width: 40%;
 }
+
+.keys:hover {
+    scale: 1.04;
+}
+
+@media (min-width: 700px)  {
+    .calc-body,
+    .calc-screen {
+        width: 60%;
+    }
+}
+
+@media (min-width: 900px)  {
+    .calc-body,
+    .calc-screen {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1100px)  {
+    .calc-body,
+    .calc-screen {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1500px)  {
+    .calc-body,
+    .calc-screen {
+        width: 35%;
+    }
+}
+
+@media (min-width: 1920px)  {
+    .calc-body,
+    .calc-screen {
+        width: 25%;
+    }
+}
+
 
 
 
