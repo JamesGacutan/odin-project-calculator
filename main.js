@@ -35,25 +35,45 @@ function operate(a, operation, b) {
 }
 
 
-// store variable when click
+// store variable when a numb key is click
 
 
 let num = [];
 
+
 function onClick(key) {
     key.addEventListener('click', (e) => {
-        num += key.textContent;
+        if (num.length <= 15) {
+            num += key.textContent;
+        } 
+
+        if (num.length == 11) {
+            calculate.style.fontSize = '1.4rem';
+        }
+
+
+        // display array per numb click
+        calculate.textContent = num;
         return num;
     });
 }
 
+
+
+
+const calculate = document.querySelector('.calculate');
 const keys = document.querySelectorAll('.num');
 const keyArray = Array.from(keys);
-
 
 keyArray.forEach(key => {
         onClick(key);
 });
+
+
+
+
+
+
 
 
 
