@@ -34,3 +34,27 @@ function operate(a, operation, b) {
     }
 }
 
+
+// store variable when click
+
+
+let num = [];
+
+function onClick(key) {
+    key.addEventListener('click', (e) => {
+        num += key.textContent;
+        return num;
+    });
+}
+
+const keys = document.querySelectorAll('.num');
+const keyArray = Array.from(keys);
+
+
+keyArray.forEach(key => {
+        onClick(key);
+});
+
+
+
+
