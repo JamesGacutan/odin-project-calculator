@@ -138,7 +138,39 @@ body {
     .calc-body,
     .calc-screen {
         width: 25%;
+        position: relative;
+        z-index: 1;
     }
+
+    .calc-body {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .calc-body::after,
+    .calc-screen::after {
+        background-color: rgb(0, 150, 150);
+        content: ' ';
+        display: block;
+        position: absolute;
+        border-top-left-radius: 0;
+    }
+
+    .calc-body::after {
+        height: 17.30vh;
+        width: 100%;
+        top: 100%;
+    }
+
+    .calc-screen::after {
+        height: 81.30vh;
+        width: 300px;
+        left: 100%;
+        top: 5%;
+    }
+
+
+
 }
 
 
