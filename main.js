@@ -134,7 +134,22 @@ equals.addEventListener('click', () => {
     num = [];
     leftNum = [];
     rightNum = [];
+});
 
+
+// clear all 
+
+const clear = document.querySelector('.clear');
+
+clear.addEventListener('click', () => {
+    num = [];
+    leftNum = [];
+    rightNum = [];
+    operator = '';
+
+    left.textContent = '';
+    operatorText.textContent = '';
+    answer.textContent = '0';
 });
 
 
