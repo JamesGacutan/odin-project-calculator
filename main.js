@@ -38,10 +38,10 @@ function operate(a, operation, b) {
 // store value in num when a numb key is click
 
 
-let num = [];
-let leftNum = [];
+let operand = [];
+let leftOperand = [];
 let operator;
-let rightNum = [];
+let rightOperand = [];
 
 const left = document.querySelector('.display-num');
 const right = document.querySelector('.right-num')
@@ -49,25 +49,26 @@ const keys = document.querySelectorAll('.num');
 const keyArray = Array.from(keys);
 
 
+
 function onDigitClick(key) {
     key.addEventListener('click', (e) => {
         // reset
         operatorText.textContent = '';
         answer.textContent = '0';
+        result = 0;
 
-        if (num.length <= 14) {
-            num += key.textContent;
+        if (operand.length <= 14) {
+            operand += key.textContent;
         } 
 
-        if (num.length == 11) {
+        if (operand.length == 11) {
             left.style.fontSize = '1.4rem';
-            // right.style.fontSize = '1.4rem';
         }
 
         // display array per numb click
-        left.textContent = num;
+        left.textContent = operand;
 
-        return num;
+        return operand;
     });
 }
 keyArray.forEach(key => {
@@ -79,14 +80,12 @@ keyArray.forEach(key => {
 
 function splitter() {
 
-    if (leftNum.length == 0) {
-        leftNum = Number(num);
-        num = [];
+    if (leftOperand.length == 0) {
+        leftOperand = Number(operand);
+        operand = [];
         left.textContent = '';
-    } else if (num == '') {
-        console.log('pls click a key')
     } else {
-        rightNum = Number(num);
+        rightOperand = Number(operand);
         operatorText.textContent = '';
     }
 }
@@ -103,12 +102,21 @@ let operatorText = document.querySelector('.operation');
 
 function onOperationClick(operation) {
     operation.addEventListener('click', () => {
-        operator = operation.textContent;
+        if (operand == '') {
 
+        } else {
+
+        keyArray.forEach(key => {
+            key.disabled = false;
+        })
         splitter();
-
+        operator = operation.textContent;
         // display operation in screen
         operatorText.textContent = operator;
+    
+        operation.pointerEvent = 'none';
+        }
+
     });
 }
 
@@ -124,16 +132,52 @@ const equals = document.querySelector('.equals');
 const answer = document.querySelector('.answer');
 
 equals.addEventListener('click', () => {
-    splitter();
+    keyArray.forEach(key => {
+        key.disabled = true;
+    });
 
-    // display answer in screen
-    answer.textContent = operate(leftNum, operator, rightNum);
+    
 
-    // reset
-    left.textContent = ''; 
-    num = [];
-    leftNum = [];
-    rightNum = [];
+    if (operand > 0 && leftOperand > 0) {
+        splitter();
+        // display answer in screen
+        const result = operate(leftOperand, operator, rightOperand);
+        
+        if (checkResult(result) === true) {
+            answer.textContent = result;
+        } else {
+            answer.textContent = result.toFixed(2);
+        }
+
+        // reset
+        left.textContent = ''; 
+        operator = '';
+        operand = result;
+        leftOperand = [];
+        rightOperand = [];
+    }
+
+});
+
+// check if int or float
+
+function checkResult(n) {
+    const isInt = n === n && n % 1 === 0;
+    const isFloat = n === n && n % 1 !== 0;
+    if (isInt) {
+        return true;
+    } else if (isFloat) {
+        return false;
+    }
+}
+
+// decimal 
+
+const decimalPoint = document.querySelector('.dot');
+
+
+decimalPoint.addEventListener('click', () => {
+    decimalPoint.disabled = true;
 });
 
 
@@ -142,15 +186,43 @@ equals.addEventListener('click', () => {
 const clear = document.querySelector('.clear');
 
 clear.addEventListener('click', () => {
-    num = [];
-    leftNum = [];
-    rightNum = [];
+    keyArray.forEach(key => {
+        key.disabled = false;
+    });
+
+    operand = [];
+    leftOperand = [];
+    rightOperand = [];
     operator = '';
 
     left.textContent = '';
     operatorText.textContent = '';
     answer.textContent = '0';
 });
+
+// delete key
+
+const del = document.querySelector('.delete');
+
+del.addEventListener('click', () => {
+    array = operand.split('');
+    newValue = array.slice(0, -1).join('');
+    left.textContent = newValue;
+    operand = newValue;
+});
+
+
+// keyboard supp
+
+const calcKeys = document.querySelectorAll('.keys');
+const calcKeysArr = Array.from(calcKeys);
+
+document.addEventListener('keydown', (e) => {  
+    console.log(e)
+});
+
+
+
 
 
 
